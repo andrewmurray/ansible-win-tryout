@@ -1,0 +1,8 @@
+[appservers]
+winappserver1
+
+[appservers:vars]
+ansible_user=Administrator
+ansible_password=blah
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore

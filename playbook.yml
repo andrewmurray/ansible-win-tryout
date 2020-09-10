@@ -1,0 +1,61 @@
+- hosts: appservers
+  gather_facts: yes
+  tasks:
+
+  - name: Application user
+    win_user:
+      name: SampleAppUser
+      fullname: Sample Application User
+      password: S4mpleA99
+      state: present
+      groups:
+        - Users
+
+  - name: Deployment user
+    win_user:
+      name: SampleDeplUser
+      fullname: Sample Deployment User
+      password: S4mpleA88
+      state: present
+      groups:
+        - Users
+
+  - name: Application folder
+    win_file:
+      path: E:\Applications\WebApplications\SampleApplication
+      state: directory
+
+  - name: Application logging folder
+    win_file:
+      path: F:\Logging\SampleApplication
+      state: directory
+
+  - name: Application user file permissions to application folder
+    win_acl:
+      path: E:\Applications\WebApplications\SampleApplication
+      user: SampleAppUser
+      rights: ListDirectory,Read
+      type: allow
+      state: present
+      inherit: ContainerInherit, ObjectInherit
+      propagation: 'None'
+
+  - name: Application user file permissions to logging folder
+    win_acl:
+      path: F:\Logging\SampleApplication
+      user: SampleAppUser
+      rights: ListDirectory,Read,Write,Delete
+      type: allow
+      state: present
+      inherit: ContainerInherit, ObjectInherit
+      propagation: 'None'
+
+  - name: Deployment user file permissions to application folder
+    win_acl:
+      path: E:\Applications\WebApplications\SampleApplication
+      user: SampleDeplUser
+      rights: ListDirectory,Read,Write,Delete
+      type: allow
+      state: present
+      inherit: ContainerInherit, ObjectInherit
+      propagation: 'None'
