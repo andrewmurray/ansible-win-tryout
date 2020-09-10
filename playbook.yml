@@ -44,7 +44,7 @@
     win_acl:
       path: F:\Logging\SampleApplication
       user: SampleAppUser
-      rights: ListDirectory,Read,Write,Delete
+      rights: Read,Modify
       type: allow
       state: present
       inherit: ContainerInherit, ObjectInherit
@@ -54,7 +54,7 @@
     win_acl:
       path: E:\Applications\WebApplications\SampleApplication
       user: SampleDeplUser
-      rights: ListDirectory,Read,Write,Delete
+      rights: Read,Modify
       type: allow
       state: present
       inherit: ContainerInherit, ObjectInherit
