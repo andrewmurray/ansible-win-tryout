@@ -9,6 +9,12 @@
     win_feature:
       name:
       - Web-Server
+      - Web-Http-Redirect
+      - Web-Log-Libraries
+      - Web-Request-Monitor
+      - Web-Http-Tracing
+      - Web-Basic-Auth
+      - Web-Windows-Auth
       - Web-App-Dev
       - Web-Net-Ext45
       - Web-AppInit
@@ -16,6 +22,12 @@
       - Web-ISAPI-Ext
       - Web-ISAPI-Filter
       - Web-WebSockets
+      - Web-Mgmt-Console
+      - Web-Mgmt-Compat
+      - Web-Metabase
+      - Web-Mgmt-Service
+      - NET-WCF-HTTP-Activation
+      - NET-WCF-TCP-Activation
       state: present
     register: iis_install
 
