@@ -16,7 +16,8 @@
       - Web-ISAPI-Ext
       - Web-ISAPI-Filter
       state: present
+    register: iis-install
 
   - name: Reboot if installing Web-Server feature requires it
-    ansible.windows.win_reboot:
-    when: win_feature.reboot_required
+    win_reboot:
+    when: iis-install.reboot_required
