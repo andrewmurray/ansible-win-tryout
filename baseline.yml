@@ -15,9 +15,10 @@
       - Web-Asp-Net45
       - Web-ISAPI-Ext
       - Web-ISAPI-Filter
+      - Web-WebSockets
       state: present
-    register: iis-install
+    register: iis_install
 
   - name: Reboot if installing Web-Server feature requires it
     win_reboot:
-    when: iis-install.reboot_required
+    when: iis_install.reboot_required
