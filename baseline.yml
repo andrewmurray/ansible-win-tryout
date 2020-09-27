@@ -1,0 +1,22 @@
+- hosts: appservers
+  gather_facts: yes
+  vars_prompt:
+    - name: admin_password
+      prompt: "What is the admin password?"
+  tasks:
+
+  - name: IIS & ASP.NET 4.5
+    win_feature:
+      name:
+      - Web-Server
+      - Web-App-Dev
+      - Web-Net-Ext45
+      - Web-AppInit
+      - Web-Asp-Net45
+      - Web-ISAPI-Ext
+      - Web-ISAPI-Filter
+      state: present
+
+  - name: Reboot if installing Web-Server feature requires it
+    ansible.windows.win_reboot:
+    when: win_feature.reboot_required
