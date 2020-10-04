@@ -2,6 +2,11 @@
   gather_facts: yes
   tasks:
 
+  - name: WebDeploy is present
+    win_chocolatey:
+      name: webdeploy
+      state: present
+
   - name: Application user
     win_user:
       name: SampleAppUser
